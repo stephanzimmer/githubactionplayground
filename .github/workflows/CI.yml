@@ -6,12 +6,10 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-
+  api-tests:
+    name: API Tests
+    runs-on: ubuntu-latest    
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Run something
-        run: echo "CI is working fine"
+      - name: run newman
+      - uses: actions/checkout@v3
+      - run: npx newman run collection.json
