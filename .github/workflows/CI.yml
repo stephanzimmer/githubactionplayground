@@ -1,16 +1,22 @@
 name: CI Pipeline
 
 on:
-  pull_request:
   push:
     branches: [ main ]
+  pull_request:
 
 jobs:
+  jest-tests:
+    name: Jest Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: npm test
+
   api-tests:
     name: API Tests
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest
     steps:
-      - name: run newman
-      - run: echo "run newman"
       - uses: actions/checkout@v3
       - run: npx newman run collection.json
