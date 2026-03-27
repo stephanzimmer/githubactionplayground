@@ -11,5 +11,6 @@ jobs:
     runs-on: ubuntu-latest    
     steps:
       - name: run newman
+      - run: echo "run newman"
       - uses: actions/checkout@v3
       - run: npx newman run collection.json
